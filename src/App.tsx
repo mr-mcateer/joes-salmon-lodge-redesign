@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Anchor, Fish, MapPin, Compass, Phone, Sun, Moon, Beer, Smile, Ship, Coffee, HelpCircle, Utensils, Info } from 'lucide-react';
+import { ArrowRight, Anchor, Fish, MapPin, Compass, Phone, Sun, Moon, Beer, Smile, Ship, Coffee, HelpCircle, Utensils, FileText } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -187,6 +187,48 @@ const AboutLodge = () => {
   );
 };
 
+// Only at Joe's Video Section
+const OnlyAtJoes = () => {
+  return (
+    <section className="py-24 px-6 md:px-12 bg-background border-b border-foreground/5">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+        <div className="flex-1 space-y-6">
+          <h2 className="font-heading font-black text-4xl md:text-5xl text-foreground relative inline-block mb-4">
+            Only at Joe's
+            <div className="absolute -bottom-4 left-0 flex items-center gap-1 text-foreground/30">
+              <Fish className="w-8 h-8 opacity-50 transform rotate-12" />
+              <div className="h-px w-24 bg-foreground/20"></div>
+            </div>
+          </h2>
+          <div>
+            <p className="font-sans text-foreground/80 text-xl leading-relaxed mt-4">
+              Discover the ultimate fishing experience at Joe's Salmon Lodge. Our expert guides and top-notch equipment ensure an incredible adventure on the waters of central coast British Columbia.
+            </p>
+          </div>
+          <div className="pt-4">
+            <a href="#lodge" className="inline-block">
+              <Button className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-4 shadow-lg shadow-accent/20">
+                Learn More
+              </Button>
+            </a>
+          </div>
+        </div>
+
+        <div className="flex-1 w-full rounded-3xl overflow-hidden shadow-2xl relative aspect-video bg-muted border-4 border-foreground/5">
+          <iframe
+            className="absolute inset-0 w-full h-full"
+            src="https://www.youtube.com/embed/mmSCcI9jFps?si=qfOqVlV0-yU_1lJt"
+            title="What to expect at Joe's"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // The Lodge Data Section
 const TheLodge = () => {
   return (
@@ -265,27 +307,52 @@ const TheFleet = () => {
             <div className="bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-bold inline-flex items-center gap-2">
               <Anchor className="w-4 h-4" /> 17' Boston Whalers
             </div>
-            <h2 className="font-heading font-black text-4xl md:text-5xl text-foreground">Ready for the Ocean</h2>
-            <p className="font-sans text-foreground/80 text-lg leading-relaxed">
-              Our 17 foot, 60 horsepower Boston Whalers are well-equipped to ensure your comfort and safety. Each person is assigned a boat number that matches their room number. At the end of the day, our crew completely restocks and fuels your boat for the next morning.
+            <h2 className="font-heading font-black text-4xl md:text-5xl text-foreground">Boats & Licensing</h2>
+            <p className="font-sans text-primary font-bold text-xl leading-relaxed">
+              Get ready to kick ass in Hakai Pass with our 17 foot, 60 horsepower Boston Whalers.
+            </p>
+            <p className="font-sans text-foreground/80 text-lg leading-relaxed mb-6">
+              Our fleet of well-equipped boats is ready to take you on an unforgettable fishing journey. Each vessel is designed to ensure your comfort and safety throughout your fishing expedition. At the end of each fishing day our crew will restock your boat with all of the equipment and bait needed for the following action packed day of fishing.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              <div className="bg-background p-4 rounded-xl border border-foreground/5 shadow-sm">
-                <strong className="block text-primary font-sans mb-1">Electronics & Safety</strong>
-                <p className="text-sm text-foreground/70">Pre-programmed GPS, VHF Marine Radios, Lowrance Sounders, lifejackets, water ladder.</p>
+            <div className="space-y-6 pt-2">
+              <div className="bg-background p-6 rounded-2xl border border-foreground/5 shadow-md hover:shadow-lg transition-shadow">
+                <strong className="block text-primary font-heading text-xl mb-3 flex items-center gap-2">
+                  <Anchor className="w-5 h-5 text-accent" /> Stocked & Serviced
+                </strong>
+                <p className="font-sans text-foreground/80 leading-relaxed text-sm lg:text-base">
+                  Every boat comes complete with a pre-programmed GPS, Marine Radios (VHF), up to date Lowrance Sounders, and safety equipment (lifejackets, water ladder). Fishing equipment includes Rod, reel, pliers, bait knives, salt, coolers, bait box, tackle box with measuring tape, salmon/halibut beads and hooks, and a bonker.
+                </p>
               </div>
-              <div className="bg-background p-4 rounded-xl border border-foreground/5 shadow-sm">
-                <strong className="block text-primary font-sans mb-1">Fishing Gear</strong>
-                <p className="text-sm text-foreground/70">Rods, reels, bait knives, coolers, bait box, hooks, measuring tape, and a bonker.</p>
-              </div>
-            </div>
 
-            <div className="bg-primary/10 border border-primary/20 p-4 rounded-xl !mt-8">
-              <strong className="block text-primary font-sans flex items-center gap-2 mb-2"><Info className="w-5 h-5" /> Important Requirements</strong>
-              <p className="text-sm text-foreground/80">
-                You must have a <strong>Boating License</strong> to operate the whalers. You also need a <strong>BC Recreational Fishing License</strong> (with a Pacific Salmon Stamp). You also must bring your own <strong>Rain Gear and Rain Boots</strong> as we no longer provide them.
-              </p>
+              <div className="bg-background p-6 rounded-2xl border border-foreground/5 shadow-md hover:shadow-lg transition-shadow">
+                <strong className="block text-primary font-heading text-xl mb-3 flex items-center gap-2">
+                  <Ship className="w-5 h-5 text-accent" /> Boat Assignments
+                </strong>
+                <p className="font-sans text-foreground/80 leading-relaxed text-sm lg:text-base mb-4">
+                  At Joe’s, we like to keep things simple. Our boat assignment runs off that same philosophy. Each person will be assigned a number at the beginning of their trip. That number is your room and boat number.
+                </p>
+                <p className="font-sans text-foreground/80 leading-relaxed text-sm lg:text-base">
+                  If you’re in room 4, your boat will be #4. Your name will also be written under #4 on our fishing board to ensure that you can track your catches. It doesn’t matter if you decide to fish in another buddy’s boat, your number is your number. We do not change those numbers.
+                </p>
+              </div>
+
+              <div className="bg-primary p-6 rounded-2xl shadow-xl text-primary-foreground border-t-4 border-accent">
+                <strong className="block font-heading text-xl mb-3 flex items-center gap-2">
+                  <FileText className="w-5 h-5" /> Licensing
+                </strong>
+                <p className="font-sans text-primary-foreground/90 leading-relaxed text-sm lg:text-base mb-6">
+                  At Joe’s we do not allow fishermen to fish without their boat and fishing licenses. Please click the links down below to purchase a fishing and boat license. When purchasing a BC Recreational Fishing License, please purchase a salmon tag in addition to your license.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <a href="https://recfish-pechesportive.dfo-mpo.gc.ca/nrls-sndpp/index-eng.cfm" target="_blank" rel="noreferrer" className="inline-block bg-white text-primary px-5 py-3 rounded-xl font-bold text-sm shadow hover:-translate-y-1 transition duration-300">
+                    Recreational Fishing License
+                  </a>
+                  <a href="https://tc.canada.ca/en/marine-transportation/vessel-safety/pleasure-craft-safety" target="_blank" rel="noreferrer" className="inline-block bg-white text-primary px-5 py-3 rounded-xl font-bold text-sm shadow hover:-translate-y-1 transition duration-300">
+                    Boating License
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -320,8 +387,8 @@ const Gallery = () => {
     "./scraped_images/img_15_.jpg",
     "./scraped_images/9D7E69AB-5264-4638-AB1B-634FC02DE00D.JPG",
     "./scraped_images/img_2_.jpg",
-    "./scraped_images/C7F628CD-B4D7-4F0E-855D-B7F17822B14C.JPG",
-    "./scraped_images/img_3_.jpg"
+    "./scraped_images/img_3_.jpg",
+    ...Array.from({ length: 32 }, (_, i) => `./scraped_images/about_gallery/about_img_${i}.jpg`)
   ];
 
   return (
@@ -497,6 +564,7 @@ function App() {
       <main>
         <Hero />
         <AboutLodge />
+        <OnlyAtJoes />
         <TheLodge />
         <TheFleet />
         <Gallery />
