@@ -304,55 +304,15 @@ const Gallery = () => {
   );
 };
 
-// Google Sheets Dynamic Booking Link
+// Google Calendar Dynamic Booking Integration
 // Instructions for Mike: 
-// 1. Create a Google Sheet with 2 columns: 'Month' (e.g., July) and 'Dates' (e.g., 23rd - 27th (SOLD OUT))
-// 2. Click File -> Share -> Publish to Web -> Choose 'CSV'
-// 3. Paste that generated link inside the quotes below:
-const GOOGLE_SHEET_CSV_URL = "";
+// 1. Open Google Calendar on desktop -> Settings -> "Integrate Calendar"
+// 2. Make sure the calendar is set to "Make available to public"
+// 3. Paste the Calendar ID below (usually an email or string ending in @group.calendar.google.com)
+const GOOGLE_CALENDAR_ID = "joessalmonlodge@gmail.com";
 
 // Rates, Dates and Packages
 const PricingAndDates = () => {
-  const [dates, setDates] = useState<Record<string, string[]>>({
-    June: ["25th - 29th (Call/Email)", "29th - July 3rd (Call/Email)"],
-    July: ["3rd - 7th (Call/Email)", "7th - 11th (Call/Email)", "11th - 15th (Call/Email)", "15th - 19th (Call/Email)", "19th - 23rd (Call/Email)", "23rd - 27th (SOLD OUT)", "27th - 31st (SOLD OUT)", "31st - Aug 4th (SOLD OUT)"],
-    August: ["4th - 8th (SOLD OUT)", "8th - 12th (SOLD OUT)", "12th - 16th (SOLD OUT)", "16th - 20th (Call/Email)", "20th - 24th (Call/Email)", "24th - 28th (SOLD OUT)", "28th - Sept 1st (SOLD OUT)"],
-    September: ["1st - 5th (SPECIAL EVENT)"]
-  });
-
-  useEffect(() => {
-    if (!GOOGLE_SHEET_CSV_URL) return;
-
-    const fetchSheetData = async () => {
-      try {
-        const response = await fetch(GOOGLE_SHEET_CSV_URL);
-        if (!response.ok) return;
-
-        const rawText = await response.text();
-        const rows = rawText.split('\n').map(row => row.split(','));
-        const incomingDates: Record<string, string[]> = {};
-
-        // Start at 1 to skip the Header row (Month, Dates)
-        for (let i = 1; i < rows.length; i++) {
-          const month = rows[i][0]?.trim();
-          const spec = rows[i][1]?.trim();
-          if (month && spec) {
-            if (!incomingDates[month]) incomingDates[month] = [];
-            incomingDates[month].push(spec);
-          }
-        }
-
-        if (Object.keys(incomingDates).length > 0) {
-          setDates(incomingDates);
-        }
-      } catch (error) {
-        console.error("Failed to load live dates from Google Sheet. Defaulting to local fallback.");
-      }
-    };
-
-    fetchSheetData();
-  }, []);
-
   return (
     <section id="pricing" className="py-24 px-6 md:px-12 bg-background flex flex-col items-center">
       <div className="text-center mb-16">
@@ -390,30 +350,23 @@ const PricingAndDates = () => {
         </article>
       </div>
 
-      {/* Availability Calendar */}
+      {/* Live Google Calendar Embed */}
       <div className="w-full max-w-6xl bg-muted rounded-[2rem] p-8 md:p-12 shadow-inner border border-foreground/10">
-        <h3 className="font-heading font-black text-3xl text-primary mb-8 text-center flex items-center justify-center gap-3"><Compass className="w-8 h-8 text-accent" /> 2026 Season Availability</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {Object.entries(dates).map(([month, specificDates]) => (
-            <div key={month} className="space-y-4">
-              <h4 className="font-sans font-bold text-xl text-foreground border-b-2 border-accent pb-2">{month}</h4>
-              <ul className="space-y-2 font-sans text-sm">
-                {specificDates.map((dateStr, idx) => {
-                  const isSoldOut = dateStr.includes("SOLD OUT");
-                  return (
-                    <li key={idx} className={cn("p-2 rounded flex justify-between items-center", isSoldOut ? "bg-foreground/5 text-foreground/40 line-through decoration-red-500/50" : "bg-card shadow-sm border border-foreground/5 text-foreground")}>
-                      <span>{dateStr.split('(')[0]}</span>
-                      {!isSoldOut && <span className="text-xs bg-primary/10 text-primary font-bold px-2 py-1 rounded">Open</span>}
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          ))}
+        <h3 className="font-heading font-black text-3xl text-primary mb-8 text-center flex items-center justify-center gap-3"><Compass className="w-8 h-8 text-accent" /> Live 2026 Availability</h3>
+
+        <div className="w-full h-[600px] rounded-xl overflow-hidden shadow-lg border border-foreground/10 bg-white">
+          <iframe
+            src={`https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FVancouver&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&src=${encodeURIComponent(GOOGLE_CALENDAR_ID)}&color=%23039BE5`}
+            style={{ width: "100%", height: "100%", border: "none" }}
+            frameBorder="0"
+            scrolling="no"
+            title="Joe's Salmon Lodge Live Availability"
+          ></iframe>
         </div>
+
         <div className="mt-12 text-center">
-          <p className="font-sans text-foreground/70 mb-4 font-medium">Dates are filling up fast. Call Mike to reserve your trip.</p>
-          <a href="tel:1-503-816-4281"><Button className="text-xl">Call 1-503-816-4281 to Book</Button></a>
+          <p className="font-sans text-foreground/70 mb-4 font-medium">Dates are filling up fast. Check the calendar above, then call Mike to reserve your trip.</p>
+          <a href="tel:1-503-816-4281"><Button className="text-xl shadow-xl hover:shadow-2xl">Call 1-503-816-4281 to Book</Button></a>
         </div>
       </div>
     </section>
