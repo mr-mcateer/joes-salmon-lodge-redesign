@@ -263,25 +263,27 @@ const TheFleet = () => {
 // Gallery Archive (Injecting real, scraped history)
 const Gallery = () => {
   const images = [
-    "./scraped_images/img_23_img_0207_jpg.jpg",
+    "./scraped_images/2916F1B6-32EA-46A1-A827-49FCDD8C1DF4.JPG",
     "./scraped_images/img_31_.jpg",
     "./scraped_images/img_32_.jpg",
     "./scraped_images/img_20_.jpg",
-    "./scraped_images/img_24_img_0129_jpg.jpg",
+    "./scraped_images/45347F94-794A-48CB-9461-F3CAF3E3E1C2.JPG",
     "./scraped_images/img_26_.jpg",
-    "./scraped_images/img_12_dji_0988_jpg.jpg",
+    "./scraped_images/4EC8B3ED-E004-4C84-9EBA-77B3217F6411.JPG",
     "./scraped_images/img_27_.jpg",
     "./scraped_images/img_28_.jpg",
     "./scraped_images/img_29_.jpg",
     "./scraped_images/img_30_.jpg",
+    "./scraped_images/7CB2D607-1471-4ADD-A8FE-0997D76EDF6A.JPG",
     "./scraped_images/img_33_.jpg",
     "./scraped_images/img_4_.jpg",
     "./scraped_images/img_5_.jpg",
-    "./scraped_images/img_8_.jpg",
+    "./scraped_images/92707773-460B-4168-A7BD-B5AD91CFF5EA.JPG",
     "./scraped_images/img_13_.jpg",
     "./scraped_images/img_15_.jpg",
-    "./scraped_images/img_1_dsc00213_edited_jpg.jpg",
+    "./scraped_images/9D7E69AB-5264-4638-AB1B-634FC02DE00D.JPG",
     "./scraped_images/img_2_.jpg",
+    "./scraped_images/C7F628CD-B4D7-4F0E-855D-B7F17822B14C.JPG",
     "./scraped_images/img_3_.jpg"
   ];
 
