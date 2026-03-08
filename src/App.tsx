@@ -124,7 +124,7 @@ const Hero = () => {
   return (
     <header className="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-background pt-20">
       <div className="absolute inset-0 z-0">
-        <SafeImage src="https://images.unsplash.com/photo-1544413158-b6156e1b6ff7?auto=format&fit=crop&q=80&w=2670" alt="Hakai Pass Fishing" className="w-full h-full object-cover dark:opacity-40 opacity-90 transition-opacity duration-500" />
+        <SafeImage src="./scraped_images/img_19_img_9032_2_edited_ed.jpg" alt="Hakai Pass Fishing" className="w-full h-full object-cover dark:opacity-40 opacity-90 transition-opacity duration-500" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent dark:from-background dark:via-background/80" />
       </div>
 
@@ -192,7 +192,7 @@ const TheLodge = () => {
           <h3 className="font-heading font-bold text-3xl text-primary flex items-center gap-3"><Utensils className="w-8 h-8 text-accent" /> Food & Drink</h3>
 
           <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg mb-6">
-            <SafeImage src="https://images.unsplash.com/photo-1544025162-8e12d385f096?auto=format&fit=crop&q=80&w=1000" alt="Delicious buffet style food" className="w-full h-full object-cover" />
+            <SafeImage src="./scraped_images/img_16_dining_main_png.jpg" alt="Delicious buffet style food" className="w-full h-full object-cover" />
           </div>
 
           <div className="bg-card border border-foreground/10 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
@@ -252,7 +252,7 @@ const TheFleet = () => {
           </div>
 
           <div className="flex-1 w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-            <SafeImage src="https://images.unsplash.com/photo-1568289456360-1e5f03a64af6?auto=format&fit=crop&q=80&w=1000" alt="Boat on the water" className="w-full h-full object-cover" />
+            <SafeImage src="./scraped_images/img_14_.jpg" alt="Boat on the water" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
