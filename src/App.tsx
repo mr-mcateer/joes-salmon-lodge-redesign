@@ -164,7 +164,7 @@ const AboutLodge = () => {
           </div>
           <h2 className="font-heading font-black text-4xl md:text-5xl text-foreground mb-6">Experience cut plug fishing at its finest!</h2>
           <p className="font-sans text-foreground/80 text-xl max-w-4xl mx-auto leading-relaxed mb-6">
-            Come have the time of your life while catching salmon, halibut, ling cod and more in beautiful Hakai Pass located on the central coast of British Columbia. Explore the stunning fishing destinations where the abundance of diverse marine life awaits. With breathtaking coastal views, our fishing locations offer an unparalleled experience for anglers of all levels. South of Bella Bella, Hakai Pass is famous for its scenic waterways and large abundance of sport fishing opportunities.
+            Come have the time of your life while catching salmon, halibut, ling cod and more in beautiful Hakai Pass located on the central coast of British Columbia.
           </p>
           <p className="font-sans text-primary font-bold text-xl max-w-3xl mx-auto leading-relaxed">
             Joe's Salmon Lodge has been in operation since 1985 with a simple mission... Provide anglers with an incredible fishing experience both on and off the water. We invite you to experience Joe's for yourself and create memories that will last a lifetime.
@@ -181,6 +181,31 @@ const AboutLodge = () => {
           <div className="rounded-3xl overflow-hidden shadow-xl h-64 md:h-80">
             <SafeImage src="./scraped_images/92707773-460B-4168-A7BD-B5AD91CFF5EA.JPG" alt="Relaxing at the lodge" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
           </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Breathtaking Destination Section
+const BreathtakingDestination = () => {
+  return (
+    <section className="py-24 px-6 md:px-12 bg-muted relative overflow-hidden border-b border-foreground/5">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
+        <div className="flex-1 w-full rounded-3xl overflow-hidden shadow-2xl relative aspect-[4/3]">
+          <SafeImage src="./scraped_images/wix_special_image.webp" alt="Map and Location of Hakai Pass" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div className="flex-1 space-y-6">
+          <div className="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-bold inline-flex items-center gap-2">
+            <Compass className="w-4 h-4" /> The Location
+          </div>
+          <h2 className="font-heading font-black text-4xl md:text-5xl text-foreground">A Breathtaking Fishing Destination</h2>
+          <p className="font-sans text-foreground/80 text-lg leading-relaxed">
+            Explore the stunning fishing destinations in Hakai Pass, where the abundance of salmon, halibut, and ling cod awaits. With breathtaking coastal views and diverse marine life, our fishing locations offer an unparalleled experience for anglers of all levels.
+          </p>
+          <p className="font-sans text-foreground/80 text-lg leading-relaxed font-medium">
+            South of Bella Bella, Hakai Pass is famous for its scenic waterways and large abundance of sport fishing opportunities.
+          </p>
         </div>
       </div>
     </section>
@@ -564,6 +589,7 @@ function App() {
       <main>
         <Hero />
         <AboutLodge />
+        <BreathtakingDestination />
         <OnlyAtJoes />
         <TheLodge />
         <TheFleet />
