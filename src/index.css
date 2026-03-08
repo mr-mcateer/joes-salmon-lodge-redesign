@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #FAFAFA;
+    /* Bright, accessible off-white */
+    --foreground: #111827;
+    /* Dark gray for high contrast text */
+    --primary: #0F766E;
+    /* Teal - fun, aquatic, accessible */
+    --primary-foreground: #FFFFFF;
+    --accent: #EA580C;
+    /* Vibrant Orange for excitement and CTAs */
+    --accent-foreground: #FFFFFF;
+    --muted: #F3F4F6;
+    --card: #FFFFFF;
+    --card-foreground: #111827;
+    --overlay: rgba(255, 255, 255, 0.8);
+  }
+
+  .dark {
+    --background: #0B1120;
+    /* Deep ocean night blue */
+    --foreground: #F9FAFB;
+    --primary: #2DD4BF;
+    /* Bright Teal for dark mode */
+    --primary-foreground: #022C22;
+    --accent: #F97316;
+    /* Bright Orange */
+    --accent-foreground: #FFF;
+    --muted: #1F2937;
+    --card: #111827;
+    --card-foreground: #F9FAFB;
+    --overlay: rgba(11, 17, 32, 0.8);
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden transition-colors duration-500;
+  }
+}
+
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+}
+
+@layer utilities {
+  .text-shadow-hero {
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
