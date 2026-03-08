@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Anchor, Fish, MapPin, Compass, Phone, Sun, Moon, Beer, Smile, Ship, Coffee, HelpCircle, Utensils, FileText } from 'lucide-react';
+import { ArrowRight, Anchor, Fish, MapPin, Compass, Phone, Sun, Moon, Beer, Smile, Ship, Coffee, HelpCircle, Utensils, FileText, Facebook, Instagram } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -413,7 +413,7 @@ const Gallery = () => {
     "./scraped_images/9D7E69AB-5264-4638-AB1B-634FC02DE00D.JPG",
     "./scraped_images/img_2_.jpg",
     "./scraped_images/img_3_.jpg",
-    ...Array.from({ length: 32 }, (_, i) => `./scraped_images/about_gallery/about_img_${i}.jpg`)
+    ...Array.from({ length: 32 }, (_, i) => `./scraped_images/about_gallery/about_img_${i}.jpg`).filter(url => !url.includes('_30.jpg') && !url.includes('_31.jpg'))
   ];
 
   return (
@@ -570,6 +570,14 @@ const Footer = () => {
             <div className="flex items-center gap-2"><Phone className="w-5 h-5 text-accent" /> <a href="tel:1-503-816-4281" className="hover:text-accent focus-ring outline-none font-black text-foreground">1-503-816-4281</a></div>
             <br />
             <a href="#faq" className="block hover:text-accent focus-ring outline-none transition-colors">FAQ</a>
+            <div className="flex gap-4 pt-4">
+              <a href="https://www.facebook.com/onlyatjoes/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-accent transition-colors focus-ring" aria-label="Facebook">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/onlyatjoes" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-accent transition-colors focus-ring" aria-label="Instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+            </div>
           </address>
         </div>
       </div>
