@@ -61,7 +61,7 @@ const Button = ({ children, className, onClick, ariaLabel, variant = 'primary' }
 };
 
 // Safe Image
-const SafeImage = ({ src, alt, className }: { src: string, alt: string, className?: string }) => {
+const SafeImage = ({ src, alt, className, priority = false }: { src: string, alt: string, className?: string, priority?: boolean }) => {
   const [error, setError] = useState(false);
 
   if (error) {
@@ -74,7 +74,7 @@ const SafeImage = ({ src, alt, className }: { src: string, alt: string, classNam
   }
 
   return (
-    <img src={src} alt={alt} className={className} onError={() => setError(true)} loading="lazy" />
+    <img src={src} alt={alt} className={className} onError={() => setError(true)} loading={priority ? "eager" : "lazy"} {...(priority ? { fetchPriority: "high" as const } : {})} />
   );
 };
 
@@ -125,28 +125,31 @@ const Hero = () => {
   return (
     <header className="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-background pt-20">
       <div className="absolute inset-0 z-0">
-        <SafeImage src="./scraped_images/img_19_img_9032_2_edited_ed.jpg" alt="Hakai Pass Fishing" className="w-full h-full object-cover dark:opacity-40 opacity-90 transition-opacity duration-500" />
+        <SafeImage src="./scraped_images/hakai-pass-rocky-coastline.jpg" alt="Rocky coastline and old-growth forest at Hakai Pass" className="w-full h-full object-cover dark:opacity-40 opacity-90 transition-opacity duration-500" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent dark:from-background dark:via-background/80" />
       </div>
 
       <div className="relative z-10 p-6 md:p-12 w-full max-w-6xl text-center flex flex-col items-center">
-        <div className="bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-bold mb-6 flex items-center gap-2 transform rotate-2 animate-bounce">
-          <Smile className="w-4 h-4" /> Welcome to Hakai Pass
+        <div className="bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-bold mb-6 flex items-center gap-2 transform rotate-2 animate-bounce shadow-xl">
+          <Fish className="w-4 h-4" /> Welcome to Joe's Salmon Lodge
         </div>
         <h1 className="flex flex-col mb-6 pointer-events-none">
-          <span className="font-heading font-bold text-foreground text-5xl md:text-7xl lg:text-8xl tracking-tight leading-tight text-shadow-hero">
-            Catch Fish.
+          <span className="font-heading font-bold text-foreground text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight text-shadow-hero">
+            Embark on an
           </span>
-          <span className="font-heading font-black text-accent text-6xl md:text-8xl lg:text-[9rem] leading-[0.9] text-shadow-hero transform -rotate-2">
-            Have Fun.
+          <span className="font-heading font-black text-accent text-5xl md:text-7xl lg:text-[7rem] leading-[0.9] text-shadow-hero transform -rotate-1 mt-2">
+            Unforgettable Adventure
           </span>
         </h1>
-        <p className="font-sans text-foreground text-xl md:text-2xl max-w-3xl mb-10 leading-relaxed font-medium bg-background/50 backdrop-blur-sm p-4 rounded-2xl border border-foreground/10">
-          Join Mike Matthews and the crew for world-class salmon fishing, unforgettable west coast buffets, and legendary evenings ringing the bell at the bar.
+        <p className="font-sans text-foreground text-xl md:text-2xl max-w-3xl mb-10 leading-relaxed font-medium bg-background/50 backdrop-blur-sm p-4 border-l-4 border-accent shadow-md">
+          Fishing for salmon, halibut, and ling cod in the breathtaking Hakai Pass.
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <a href="#pricing"><Button className="text-lg px-8 py-4">Book the Adventure <ArrowRight className="w-5 h-5 inline-block" /></Button></a>
-          <a href="#fleet"><Button variant="outline" className="text-lg px-8 py-4 bg-background/80 backdrop-blur-md">View the Fleet</Button></a>
+        <div className="flex flex-col items-center gap-4">
+          <p className="font-sans text-foreground/80 text-lg font-bold mb-2">Book your spot now and get ready to reel in the big catch!</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href="#pricing"><Button className="text-xl px-10 py-6 bg-accent text-white hover:bg-accent/90 shadow-lg shadow-accent/20">Book the Adventure <ArrowRight className="w-5 h-5 ml-2 inline-block" /></Button></a>
+            <a href="#fleet"><Button variant="outline" className="text-lg px-8 py-5 bg-background/80 backdrop-blur-md">View the Fleet</Button></a>
+          </div>
         </div>
       </div>
     </header>
@@ -173,13 +176,13 @@ const AboutLodge = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="rounded-3xl overflow-hidden shadow-xl h-64 md:h-80">
-            <SafeImage src="./scraped_images/img_30_.jpg" alt="Hakai Pass View" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
+            <SafeImage src="./scraped_images/about_gallery/lodge-aerial-red-roofs-hires.jpg" alt="Aerial view of the floating lodge with red-roofed boathouse and full fleet docked" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
           </div>
           <div className="rounded-3xl overflow-hidden shadow-xl h-64 md:h-80 md:-translate-y-8">
-            <SafeImage src="./scraped_images/C7F628CD-B4D7-4F0E-855D-B7F17822B14C.JPG" alt="Holding up a massive catch" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
+            <SafeImage src="./scraped_images/guide-and-guest-catch-boat-17.jpg" alt="Lodge guide and guest with fresh salmon aboard branded boat" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
           </div>
           <div className="rounded-3xl overflow-hidden shadow-xl h-64 md:h-80">
-            <SafeImage src="./scraped_images/92707773-460B-4168-A7BD-B5AD91CFF5EA.JPG" alt="Relaxing at the lodge" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
+            <SafeImage src="./scraped_images/guest-group-on-sundeck.jpg" alt="Group of guests enjoying the lodge sundeck at Hakai Pass" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
           </div>
         </div>
       </div>
@@ -193,7 +196,7 @@ const BreathtakingDestination = () => {
     <section className="py-24 px-6 md:px-12 bg-muted relative overflow-hidden border-b border-foreground/5">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
         <div className="flex-1 w-full rounded-3xl overflow-hidden shadow-2xl relative aspect-[4/3]">
-          <SafeImage src="./scraped_images/wix_special_image.webp" alt="Map and Location of Hakai Pass" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
+          <SafeImage src="./scraped_images/hakai-pass-aerial-coastline.webp" alt="Aerial view of Hakai Pass forested islands and coastline" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
         </div>
         <div className="flex-1 space-y-6">
           <div className="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-bold inline-flex items-center gap-2">
@@ -273,7 +276,7 @@ const TheLodge = () => {
             <ul className="space-y-4 font-sans text-foreground/80">
               <li><strong className="text-primary">The Angler's Suite:</strong> 1-2 fishermen, 2 beds, private half-bath.</li>
               <li><strong className="text-primary">The Shoal Suite:</strong> 2-3 fishermen, 3 beds (single + bunk), private half-bath.</li>
-              <li><span className="italic">Ammenities:</span> In-room heater, USB port, outlets, nature facing windows, complementary wifi.</li>
+              <li><span className="italic">Amenities:</span> In-room heater, USB port, outlets, nature-facing windows, complimentary wifi.</li>
               <li><strong className="text-primary">Showers:</strong> 3 communal showers on the main level, cleaned daily.</li>
             </ul>
           </div>
@@ -294,7 +297,7 @@ const TheLodge = () => {
           <h3 className="font-heading font-bold text-3xl text-primary flex items-center gap-3"><Utensils className="w-8 h-8 text-accent" /> Food & Drink</h3>
 
           <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg mb-6">
-            <SafeImage src="./scraped_images/img_16_dining_main_png.jpg" alt="Delicious buffet style food" className="w-full h-full object-cover" />
+            <SafeImage src="./scraped_images/about_gallery/dining-hall-cedar-ceiling-wide.jpg" alt="Lodge dining hall with cedar cathedral ceiling, fish mounts, and forest-view windows" className="w-full h-full object-cover" />
           </div>
 
           <div className="bg-card border border-foreground/10 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
@@ -382,7 +385,7 @@ const TheFleet = () => {
           </div>
 
           <div className="flex-1 w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-            <SafeImage src="./scraped_images/img_14_.jpg" alt="Boat on the water" className="w-full h-full object-cover" />
+            <SafeImage src="./scraped_images/about_gallery/fleet-lineup-docked-at-lodge.jpg" alt="Fleet of branded Boston Whalers docked at the lodge with fishing rods rigged and ready" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -393,27 +396,59 @@ const TheFleet = () => {
 // Gallery Archive (Injecting real, scraped history)
 const Gallery = () => {
   const images = [
-    "./scraped_images/2916F1B6-32EA-46A1-A827-49FCDD8C1DF4.JPG",
-    "./scraped_images/img_31_.jpg",
-    "./scraped_images/img_32_.jpg",
-    "./scraped_images/img_20_.jpg",
-    "./scraped_images/45347F94-794A-48CB-9461-F3CAF3E3E1C2.JPG",
-    "./scraped_images/img_26_.jpg",
-    "./scraped_images/4EC8B3ED-E004-4C84-9EBA-77B3217F6411.JPG",
-    "./scraped_images/img_27_.jpg",
-    "./scraped_images/img_28_.jpg",
-    "./scraped_images/img_29_.jpg",
-    "./scraped_images/img_30_.jpg",
-    "./scraped_images/7CB2D607-1471-4ADD-A8FE-0997D76EDF6A.JPG",
-    "./scraped_images/img_33_.jpg",
-    "./scraped_images/img_4_.jpg",
-    "./scraped_images/img_5_.jpg",
-    "./scraped_images/92707773-460B-4168-A7BD-B5AD91CFF5EA.JPG",
-    "./scraped_images/img_15_.jpg",
-    "./scraped_images/9D7E69AB-5264-4638-AB1B-634FC02DE00D.JPG",
-    "./scraped_images/img_2_.jpg",
-    "./scraped_images/img_3_.jpg",
-    ...Array.from({ length: 32 }, (_, i) => `./scraped_images/about_gallery/about_img_${i}.jpg`).filter(url => !url.includes('_30.jpg') && !url.includes('_31.jpg'))
+    // Top-tier catches & action
+    "./scraped_images/group-catch-display-on-dock.jpg",
+    "./scraped_images/angler-fighting-fish-action.jpg",
+    "./scraped_images/young-angler-giant-chinook.jpg",
+    "./scraped_images/three-anglers-trophy-chinook.jpg",
+    "./scraped_images/female-angler-trophy-chinook.jpg",
+    "./scraped_images/angler-salmon-on-boat-bow.jpg",
+    "./scraped_images/young-angler-lingcod-catch.jpg",
+    "./scraped_images/angler-double-chinook-weigh-station.jpg",
+    "./scraped_images/angler-trophy-chinook-red-gear.jpg",
+    "./scraped_images/guest-chinook-catch-lodge-sign.jpg",
+    "./scraped_images/angler-salmon-on-branded-boat.jpg",
+    "./scraped_images/two-anglers-catch-on-boat.jpg",
+    "./scraped_images/fresh-catch-lingcod-rockfish-bin.jpg",
+    // Lodge, fleet & people
+    "./scraped_images/guest-group-on-sundeck.jpg",
+    "./scraped_images/guest-group-on-deck.jpg",
+    "./scraped_images/trophy-hall-of-fame-plaque.jpg",
+    "./scraped_images/lodge-aerial-distant-cove.jpg",
+    "./scraped_images/lodge-aerial-with-fleet.jpg",
+    "./scraped_images/fishing-boat-underway-hakai.jpg",
+    "./scraped_images/guide-and-guest-catch-boat-17.jpg",
+    // Scenery
+    "./scraped_images/aerial-hakai-pass-islands.jpg",
+    "./scraped_images/aerial-emerald-lagoon.jpg",
+    // About gallery — on-water & scenery
+    "./scraped_images/about_gallery/boat-anglers-rocky-coastline-pano.jpg",
+    "./scraped_images/about_gallery/aerial-hakai-islands-hires.jpg",
+    "./scraped_images/about_gallery/golden-hour-boat-glassy-water.jpg",
+    "./scraped_images/about_gallery/aerial-emerald-lagoon-hires.jpg",
+    "./scraped_images/about_gallery/aerial-hakai-channel-to-pacific.jpg",
+    "./scraped_images/about_gallery/aerial-forested-inlet-mountains.jpg",
+    "./scraped_images/about_gallery/rocky-coastline-cliffs-evergreens.jpg",
+    "./scraped_images/about_gallery/lodge-nestled-in-wilderness-cove.jpg",
+    "./scraped_images/about_gallery/guides-waving-from-boat-hires.jpg",
+    // About gallery — wildlife
+    "./scraped_images/about_gallery/whale-blowing-beside-fishing-boat.jpg",
+    "./scraped_images/about_gallery/whale-tail-fluke-near-boat.jpg",
+    // About gallery — lodge & dining
+    "./scraped_images/about_gallery/lodge-aerial-red-roofs-hires.jpg",
+    "./scraped_images/about_gallery/guest-group-on-deck-hires.jpg",
+    "./scraped_images/about_gallery/fleet-lineup-docked-at-lodge.jpg",
+    "./scraped_images/about_gallery/dining-hall-cedar-ceiling-wide.jpg",
+    "./scraped_images/about_gallery/dining-hall-afternoon-light.jpg",
+    "./scraped_images/about_gallery/plated-soup-and-sandwich.jpg",
+    // About gallery — accommodation
+    "./scraped_images/about_gallery/stateroom-twin-beds-bright.jpg",
+    "./scraped_images/about_gallery/bunk-room-cozy-blue-bedding.jpg",
+    "./scraped_images/about_gallery/lounge-leather-couches-hires.jpg",
+    "./scraped_images/about_gallery/stateroom-with-ensuite-bath.jpg",
+    // About gallery — catches
+    "./scraped_images/about_gallery/two-anglers-chinook-rough-seas.jpg",
+    "./scraped_images/about_gallery/female-angler-chinook-at-sign.jpg",
   ];
 
   return (
@@ -426,7 +461,7 @@ const Gallery = () => {
       <div className="columns-2 md:columns-3 lg:columns-4 gap-4 px-4 w-full max-w-7xl mx-auto space-y-4">
         {images.map((img, i) => (
           <div key={i} className="break-inside-avoid relative group rounded-xl overflow-hidden shadow-md bg-muted">
-            <SafeImage src={img} alt={`Joe's Salmon Lodge History ${i}`} className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
+            <SafeImage src={img} alt={img.split('/').pop()?.replace(/[-_]/g, ' ').replace(/\.\w+$/, '') || `Joe's Salmon Lodge photo ${i + 1}`} className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
           </div>
         ))}
