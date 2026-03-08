@@ -304,14 +304,54 @@ const Gallery = () => {
   );
 };
 
+// Google Sheets Dynamic Booking Link
+// Instructions for Mike: 
+// 1. Create a Google Sheet with 2 columns: 'Month' (e.g., July) and 'Dates' (e.g., 23rd - 27th (SOLD OUT))
+// 2. Click File -> Share -> Publish to Web -> Choose 'CSV'
+// 3. Paste that generated link inside the quotes below:
+const GOOGLE_SHEET_CSV_URL = "";
+
 // Rates, Dates and Packages
 const PricingAndDates = () => {
-  const dates = {
+  const [dates, setDates] = useState<Record<string, string[]>>({
     June: ["25th - 29th (Call/Email)", "29th - July 3rd (Call/Email)"],
     July: ["3rd - 7th (Call/Email)", "7th - 11th (Call/Email)", "11th - 15th (Call/Email)", "15th - 19th (Call/Email)", "19th - 23rd (Call/Email)", "23rd - 27th (SOLD OUT)", "27th - 31st (SOLD OUT)", "31st - Aug 4th (SOLD OUT)"],
     August: ["4th - 8th (SOLD OUT)", "8th - 12th (SOLD OUT)", "12th - 16th (SOLD OUT)", "16th - 20th (Call/Email)", "20th - 24th (Call/Email)", "24th - 28th (SOLD OUT)", "28th - Sept 1st (SOLD OUT)"],
     September: ["1st - 5th (SPECIAL EVENT)"]
-  };
+  });
+
+  useEffect(() => {
+    if (!GOOGLE_SHEET_CSV_URL) return;
+
+    const fetchSheetData = async () => {
+      try {
+        const response = await fetch(GOOGLE_SHEET_CSV_URL);
+        if (!response.ok) return;
+
+        const rawText = await response.text();
+        const rows = rawText.split('\n').map(row => row.split(','));
+        const incomingDates: Record<string, string[]> = {};
+
+        // Start at 1 to skip the Header row (Month, Dates)
+        for (let i = 1; i < rows.length; i++) {
+          const month = rows[i][0]?.trim();
+          const spec = rows[i][1]?.trim();
+          if (month && spec) {
+            if (!incomingDates[month]) incomingDates[month] = [];
+            incomingDates[month].push(spec);
+          }
+        }
+
+        if (Object.keys(incomingDates).length > 0) {
+          setDates(incomingDates);
+        }
+      } catch (error) {
+        console.error("Failed to load live dates from Google Sheet. Defaulting to local fallback.");
+      }
+    };
+
+    fetchSheetData();
+  }, []);
 
   return (
     <section id="pricing" className="py-24 px-6 md:px-12 bg-background flex flex-col items-center">
