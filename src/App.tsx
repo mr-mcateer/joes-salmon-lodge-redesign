@@ -101,6 +101,7 @@ const Navbar = ({ theme, toggleTheme }: { theme: string, toggleTheme: () => void
         <span className="lg:hidden">JOE'S</span>
       </div>
       <div className="hidden md:flex gap-6 font-sans text-sm font-semibold text-foreground">
+        <a href="#about" className="hover:text-accent focus-ring transition-colors">ABOUT</a>
         <a href="#lodge" className="hover:text-accent focus-ring transition-colors">THE LODGE</a>
         <a href="#fleet" className="hover:text-accent focus-ring transition-colors">THE FLEET</a>
         <a href="#gallery" className="hover:text-accent focus-ring transition-colors">GALLERY</a>
@@ -149,6 +150,56 @@ const Hero = () => {
         </div>
       </div>
     </header>
+  );
+};
+
+// About Section
+const AboutLodge = () => {
+  return (
+    <section id="about" className="py-24 px-6 md:px-12 bg-muted relative overflow-hidden border-b border-foreground/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-heading font-black text-4xl md:text-5xl text-foreground mb-6">A Breathtaking Fishing Destination</h2>
+          <p className="font-sans text-foreground/80 text-xl max-w-4xl mx-auto leading-relaxed">
+            Explore the stunning fishing destinations in Hakai Pass, where the abundance of salmon, halibut, and ling cod awaits. With breathtaking coastal views and diverse marine life, our fishing locations offer an unparalleled experience for anglers of all levels. South of Bella Bella, Hakai Pass is famous for its scenic waterways and large abundance of sport fishing opportunities.
+          </p>
+        </div>
+
+        <h3 className="font-heading font-black text-3xl md:text-4xl text-center text-primary mb-12 flex justify-center items-center gap-4"><Anchor className="w-8 h-8 text-accent" /> Meet Your Hosts</h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* Doug */}
+          <div className="bg-background rounded-3xl p-8 shadow-xl border-t-8 border-accent hover:-translate-y-2 transition-transform duration-500">
+            <div className="flex items-center gap-6 mb-6">
+              <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-muted shrink-0 shadow-md">
+                <SafeImage src="./scraped_images/img_22_doug_png.jpg" alt="Doug Stuffco" className="w-full h-full object-cover object-top" />
+              </div>
+              <h4 className="font-heading font-bold text-3xl text-foreground">Doug Stuffco</h4>
+            </div>
+            <p className="font-sans text-foreground/80 leading-relaxed space-y-4">
+              <span className="block">Starting as a deckhand in 1987, Doug Stuffco is one of the most experienced anglers in Hakai Pass. With an immense love for the location Doug has fished every possible fishing hole you could imagine.</span>
+              <span className="block">Doug's welcoming hospitality and fun loving personality has been filling the lodge with loyal guests and repeat customers for decades.</span>
+              <span className="block italic text-primary font-bold">"You will arrive at Joe's Salmon Lodge as a guest but by the time you leave it will feel like you are leaving home."</span>
+            </p>
+          </div>
+
+          {/* Carl */}
+          <div className="bg-background rounded-3xl p-8 shadow-xl border-t-8 border-primary hover:-translate-y-2 transition-transform duration-500">
+            <div className="flex items-center gap-6 mb-6">
+              <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-muted shrink-0 shadow-md bg-muted flex items-center justify-center">
+                <SafeImage src="./scraped_images/45347F94-794A-48CB-9461-F3CAF3E3E1C2.JPG" alt="Carl Rosenau" className="w-full h-full object-cover" />
+              </div>
+              <h4 className="font-heading font-bold text-3xl text-foreground">Carl Rosenau</h4>
+            </div>
+            <p className="font-sans text-foreground/80 leading-relaxed space-y-4">
+              <span className="block">Carl Rosenau fell in love with Joe's Salmon Lodge almost immediately upon arrival. The incredibly scenic area, calm waters, abundant fishery and unlimited adventure captivated Carl after his first outing on a Joe's boat.</span>
+              <span className="block">Carl and his wife Grace can be seen entertaining guests out on the water or up in the bar, ringing the bell and keeping everyone entertained with their kind and embracing presence.</span>
+              <span className="block italic text-primary font-bold">"Joe's Salmon Lodge is your home away from home, just waiting for you to come back again."</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -426,6 +477,7 @@ const Footer = () => {
         <div className="space-y-6">
           <h4 className="font-heading font-bold text-2xl text-primary">Experience</h4>
           <ul className="space-y-3 font-sans text-base font-medium text-foreground/70">
+            <li><a href="#about" className="hover:text-accent focus-ring outline-none transition-colors">About Us</a></li>
             <li><a href="#lodge" className="hover:text-accent focus-ring outline-none transition-colors">The Lodge</a></li>
             <li><a href="#fleet" className="hover:text-accent focus-ring outline-none transition-colors">The Fleet</a></li>
             <li><a href="#pricing" className="hover:text-accent focus-ring outline-none transition-colors">Rates & Packages</a></li>
@@ -457,6 +509,7 @@ function App() {
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <main>
         <Hero />
+        <AboutLodge />
         <TheLodge />
         <TheFleet />
         <Gallery />
