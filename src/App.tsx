@@ -279,7 +279,6 @@ const Gallery = () => {
     "./scraped_images/img_4_.jpg",
     "./scraped_images/img_5_.jpg",
     "./scraped_images/92707773-460B-4168-A7BD-B5AD91CFF5EA.JPG",
-    "./scraped_images/img_13_.jpg",
     "./scraped_images/img_15_.jpg",
     "./scraped_images/9D7E69AB-5264-4638-AB1B-634FC02DE00D.JPG",
     "./scraped_images/img_2_.jpg",
