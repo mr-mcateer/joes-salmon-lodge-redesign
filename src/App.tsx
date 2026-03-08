@@ -96,7 +96,7 @@ const Navbar = ({ theme, toggleTheme }: { theme: string, toggleTheme: () => void
   return (
     <nav ref={navRef} aria-label="Main Navigation" className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500 w-[95%] max-w-7xl bg-overlay border border-foreground/10">
       <div className="font-heading font-bold text-xl tracking-tight shrink-0 flex items-center gap-2 text-primary">
-        <Fish className="w-6 h-6" aria-hidden="true" />
+        <img src="./logo.svg" alt="Joe's Salmon Lodge Logo" className="w-8 h-8 object-contain" aria-hidden="true" />
         <span className="hidden lg:inline">JOE'S SALMON LODGE</span>
         <span className="lg:hidden">JOE'S</span>
       </div>
@@ -411,7 +411,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
         <div className="col-span-1 md:col-span-2 space-y-6">
           <div className="flex items-center gap-3 text-primary">
-            <Fish className="w-8 h-8" />
+            <img src="./logo.svg" alt="Joe's Salmon Lodge Logo" className="w-10 h-10 object-contain" />
             <h2 className="font-heading text-3xl font-black tracking-tight">JOE'S SALMON LODGE</h2>
           </div>
           <p className="font-sans text-foreground/70 max-w-md font-medium text-lg">Incredible fishing, comfortable accommodations, and the best hospitality on the central coast of British Columbia.</p>

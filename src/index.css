@@ -8,32 +8,32 @@
     /* Bright, accessible off-white */
     --foreground: #111827;
     /* Dark gray for high contrast text */
-    --primary: #0F766E;
-    /* Teal - fun, aquatic, accessible */
+    --primary: #2B5672;
+    /* Nautical Blue replacing Teal */
     --primary-foreground: #FFFFFF;
-    --accent: #EA580C;
-    /* Vibrant Orange for excitement and CTAs */
+    --accent: #A72F2A;
+    /* Joe's Specific Red replacing Orange */
     --accent-foreground: #FFFFFF;
     --muted: #F3F4F6;
     --card: #FFFFFF;
     --card-foreground: #111827;
-    --overlay: rgba(255, 255, 255, 0.8);
+    --overlay: rgba(255, 255, 255, 0.84);
   }
 
   .dark {
     --background: #0B1120;
     /* Deep ocean night blue */
     --foreground: #F9FAFB;
-    --primary: #2DD4BF;
-    /* Bright Teal for dark mode */
-    --primary-foreground: #022C22;
-    --accent: #F97316;
-    /* Bright Orange */
+    --primary: #5289AE;
+    /* Brightened Nautical Blue */
+    --primary-foreground: #FFFFFF;
+    --accent: #E03939;
+    /* Brightened Joe's Red */
     --accent-foreground: #FFF;
     --muted: #1F2937;
     --card: #111827;
     --card-foreground: #F9FAFB;
-    --overlay: rgba(11, 17, 32, 0.8);
+    --overlay: rgba(11, 17, 32, 0.84);
   }
 
   body {
