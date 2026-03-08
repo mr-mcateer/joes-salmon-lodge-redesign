@@ -159,10 +159,28 @@ const AboutLodge = () => {
     <section id="about" className="py-24 px-6 md:px-12 bg-muted relative overflow-hidden border-b border-foreground/5">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="font-heading font-black text-4xl md:text-5xl text-foreground mb-6">A Breathtaking Fishing Destination</h2>
-          <p className="font-sans text-foreground/80 text-xl max-w-4xl mx-auto leading-relaxed">
-            Explore the stunning fishing destinations in Hakai Pass, where the abundance of salmon, halibut, and ling cod awaits. With breathtaking coastal views and diverse marine life, our fishing locations offer an unparalleled experience for anglers of all levels. South of Bella Bella, Hakai Pass is famous for its scenic waterways and large abundance of sport fishing opportunities.
+          <div className="bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-bold inline-flex items-center gap-2 mb-6">
+            <Fish className="w-4 h-4" /> Since 1985
+          </div>
+          <h2 className="font-heading font-black text-4xl md:text-5xl text-foreground mb-6">Experience cut plug fishing at its finest!</h2>
+          <p className="font-sans text-foreground/80 text-xl max-w-4xl mx-auto leading-relaxed mb-6">
+            Come have the time of your life while catching salmon, halibut, ling cod and more in beautiful Hakai Pass located on the central coast of British Columbia. Explore the stunning fishing destinations where the abundance of diverse marine life awaits. With breathtaking coastal views, our fishing locations offer an unparalleled experience for anglers of all levels. South of Bella Bella, Hakai Pass is famous for its scenic waterways and large abundance of sport fishing opportunities.
           </p>
+          <p className="font-sans text-primary font-bold text-xl max-w-3xl mx-auto leading-relaxed">
+            Joe's Salmon Lodge has been in operation since 1985 with a simple mission... Provide anglers with an incredible fishing experience both on and off the water. We invite you to experience Joe's for yourself and create memories that will last a lifetime.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="rounded-3xl overflow-hidden shadow-xl h-64 md:h-80">
+            <SafeImage src="./scraped_images/img_30_.jpg" alt="Hakai Pass View" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
+          </div>
+          <div className="rounded-3xl overflow-hidden shadow-xl h-64 md:h-80 md:-translate-y-8">
+            <SafeImage src="./scraped_images/C7F628CD-B4D7-4F0E-855D-B7F17822B14C.JPG" alt="Holding up a massive catch" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
+          </div>
+          <div className="rounded-3xl overflow-hidden shadow-xl h-64 md:h-80">
+            <SafeImage src="./scraped_images/92707773-460B-4168-A7BD-B5AD91CFF5EA.JPG" alt="Relaxing at the lodge" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
+          </div>
         </div>
       </div>
     </section>
@@ -215,7 +233,10 @@ const TheLodge = () => {
           <div className="bg-card border border-foreground/10 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <h4 className="font-sans font-bold text-xl mb-2 text-foreground">West Coast Buffet</h4>
             <p className="font-sans text-foreground/80 mb-4">
-              Delicious buffet style breakfast, lunch, and dinner. All meals included with your stay. Prefer to fish? Fill out a sandwich form and we'll pack your lunch for the boat.
+              We know that you want to get out and enjoy the waters as much as possible. That’s why we offer our guests a delicious, west coast style buffet for breakfast, lunch, and dinner.
+            </p>
+            <p className="font-sans text-foreground/80 mb-4">
+              Prefer to take your lunch on the water? We've got you covered! Fill out a sandwich form and your lunch will be packed and ready for you in the morning. All meals are included with your stay. <span className="font-bold text-accent">Please let us know if you have any dietary restrictions when you book your trip.</span>
             </p>
           </div>
 
