@@ -103,6 +103,7 @@ const Navbar = ({ theme, toggleTheme }: { theme: string, toggleTheme: () => void
       <div className="hidden md:flex gap-6 font-sans text-sm font-semibold text-foreground">
         <a href="#lodge" className="hover:text-accent focus-ring transition-colors">THE LODGE</a>
         <a href="#fleet" className="hover:text-accent focus-ring transition-colors">THE FLEET</a>
+        <a href="#gallery" className="hover:text-accent focus-ring transition-colors">GALLERY</a>
         <a href="#pricing" className="hover:text-accent focus-ring transition-colors">RATES & DATES</a>
         <a href="#faq" className="hover:text-accent focus-ring transition-colors">FAQ</a>
       </div>
@@ -123,7 +124,7 @@ const Hero = () => {
   return (
     <header className="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-background pt-20">
       <div className="absolute inset-0 z-0">
-        <SafeImage src="./scraped_images/img_19_img_9032_2_edited_ed.jpg" alt="Hakai Pass Fishing" className="w-full h-full object-cover dark:opacity-40 opacity-90 transition-opacity duration-500" />
+        <SafeImage src="https://images.unsplash.com/photo-1544413158-b6156e1b6ff7?auto=format&fit=crop&q=80&w=2670" alt="Hakai Pass Fishing" className="w-full h-full object-cover dark:opacity-40 opacity-90 transition-opacity duration-500" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent dark:from-background dark:via-background/80" />
       </div>
 
@@ -191,7 +192,7 @@ const TheLodge = () => {
           <h3 className="font-heading font-bold text-3xl text-primary flex items-center gap-3"><Utensils className="w-8 h-8 text-accent" /> Food & Drink</h3>
 
           <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg mb-6">
-            <SafeImage src="./scraped_images/img_16_dining_main_png.jpg" alt="Delicious buffet style food" className="w-full h-full object-cover" />
+            <SafeImage src="https://images.unsplash.com/photo-1544025162-8e12d385f096?auto=format&fit=crop&q=80&w=1000" alt="Delicious buffet style food" className="w-full h-full object-cover" />
           </div>
 
           <div className="bg-card border border-foreground/10 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
@@ -251,9 +252,53 @@ const TheFleet = () => {
           </div>
 
           <div className="flex-1 w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-            <SafeImage src="./scraped_images/img_14_.jpg" alt="Boat on the water" className="w-full h-full object-cover" />
+            <SafeImage src="https://images.unsplash.com/photo-1568289456360-1e5f03a64af6?auto=format&fit=crop&q=80&w=1000" alt="Boat on the water" className="w-full h-full object-cover" />
           </div>
         </div>
+      </div>
+    </section>
+  );
+};
+
+// Gallery Archive (Injecting real, scraped history)
+const Gallery = () => {
+  const images = [
+    "./scraped_images/img_23_img_0207_jpg.jpg",
+    "./scraped_images/img_31_.jpg",
+    "./scraped_images/img_32_.jpg",
+    "./scraped_images/img_20_.jpg",
+    "./scraped_images/img_24_img_0129_jpg.jpg",
+    "./scraped_images/img_26_.jpg",
+    "./scraped_images/img_12_dji_0988_jpg.jpg",
+    "./scraped_images/img_27_.jpg",
+    "./scraped_images/img_28_.jpg",
+    "./scraped_images/img_29_.jpg",
+    "./scraped_images/img_30_.jpg",
+    "./scraped_images/img_33_.jpg",
+    "./scraped_images/img_4_.jpg",
+    "./scraped_images/img_5_.jpg",
+    "./scraped_images/img_8_.jpg",
+    "./scraped_images/img_13_.jpg",
+    "./scraped_images/img_15_.jpg",
+    "./scraped_images/img_1_dsc00213_edited_jpg.jpg",
+    "./scraped_images/img_2_.jpg",
+    "./scraped_images/img_3_.jpg"
+  ];
+
+  return (
+    <section id="gallery" className="py-24 bg-background overflow-hidden border-t border-b border-foreground/5">
+      <div className="text-center mb-16 px-6">
+        <h2 className="font-heading font-black text-4xl md:text-5xl text-foreground">Hakai Pass Archive</h2>
+        <p className="font-sans text-foreground/70 text-lg mt-4 max-w-2xl mx-auto">Decades of legendary moments, monster catches, and unmatched hospitality on the water.</p>
+      </div>
+
+      <div className="columns-2 md:columns-3 lg:columns-4 gap-4 px-4 w-full max-w-7xl mx-auto space-y-4">
+        {images.map((img, i) => (
+          <div key={i} className="break-inside-avoid relative group rounded-xl overflow-hidden shadow-md bg-muted">
+            <SafeImage src={img} alt={`Joe's Salmon Lodge History ${i}`} className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -420,6 +465,7 @@ function App() {
         <Hero />
         <TheLodge />
         <TheFleet />
+        <Gallery />
         <PricingAndDates />
         <FAQSection />
       </main>
